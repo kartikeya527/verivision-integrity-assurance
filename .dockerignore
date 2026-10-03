@@ -1,0 +1,7 @@
+data/verivision.db
+data/uploads/*
+data/reports/*
+data/keys/*
+__pycache__/
+*.pyc
+.git/

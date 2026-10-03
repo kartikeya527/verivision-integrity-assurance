@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07131c">
+  <title>VeriVision · Trust & Integrity Command Center</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+
+  <header class="topbar">
+    <div class="brand-block">
+      <div class="brand-mark"><span>V</span></div>
+      <div>
+        <div class="eyebrow">OFFLINE ASSURANCE PLATFORM · AIR-GAPPED READY</div>
+        <div class="brand-name">VERIVISION</div>
+        <div class="brand-sub">Trust & Integrity Command Center <span>· DATA · MODEL · OUTPUT · SHIFT</span></div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="live-indicator"><i></i><span>LOCAL EVIDENCE STORE</span></div>
+      <button id="healthBtn" class="top-btn">System status</button>
+      <button id="historyBtn" class="top-btn">History</button>
+    </div>
+  </header>
+
+  <div class="app-grid">
+    <aside class="sidebar">
+      <div class="side-card mission-card">
+        <div class="side-kicker">MISSION SETUP</div>
+        <label class="field-label">Inspection identity</label>
+        <input id="name" class="input" value="Aerial AI Assurance — Batch 01">
+
+        <div class="ingest-stack">
+          <label class="ingest" data-target="dataInput">
+            <span class="ingest-icon">▦</span><span><b>TRAINING DATA</b><small>COCO · YOLO · images</small></span><em id="dataCount">0</em>
+            <input id="dataInput" type="file" multiple>
+          </label>
+          <label class="ingest" data-target="modelInput">
+            <span class="ingest-icon">◈</span><span><b>AI MODEL</b><small>ONNX · PyTorch</small></span><em id="modelCount">0</em>
+            <input id="modelInput" type="file">
+          </label>
+          <label class="ingest" data-target="outputInput">
+            <span class="ingest-icon">⌁</span><span><b>INFERENCE OUTPUTS</b><small>JSON · JSONL signed records</small></span><em id="outputCount">0</em>
+            <input id="outputInput" type="file">
+          </label>
+          <label class="ingest" data-target="refInput">
+            <span class="ingest-icon">◌</span><span><b>REFERENCE POPULATION</b><small>Baseline image population</small></span><em id="refCount">0</em>
+            <input id="refInput" type="file" multiple>
+          </label>
+          <label class="ingest" data-target="curInput">
+            <span class="ingest-icon">◎</span><span><b>CURRENT POPULATION</b><small>New image population</small></span><em id="curCount">0</em>
+            <input id="curInput" type="file" multiple>
+          </label>
+        </div>
+
+        <button id="inspectBtn" class="action-primary"><span>RUN FULL INSPECTION</span><i>↗</i></button>
+        <button id="demoBtn" class="action-secondary"><span>Run Integrity Assurance Demonstration</span><i>▶</i></button>
+        <div id="ingestStatus" class="ingest-status">Ready for local evidence.</div>
+      </div>
+
+      <div class="side-card assurance-card">
+        <div class="side-kicker">ASSURANCE ENGINES</div>
+        <div class="engine-row"><i></i><span>Data integrity</span><b>ACTIVE</b></div>
+        <div class="engine-row"><i></i><span>Model forensics</span><b>ACTIVE</b></div>
+        <div class="engine-row"><i></i><span>Provenance cryptography</span><b>ACTIVE</b></div>
+        <div class="engine-row"><i></i><span>Drift attribution</span><b>ACTIVE</b></div>
+        <div class="engine-row"><i></i><span>Evidence graph</span><b>ACTIVE</b></div>
+      </div>
+
+      <div class="side-card principle-card">
+        <div class="principle-line"><span>01</span><b>VERIFY</b></div>
+        <div class="principle-line"><span>02</span><b>TRACE</b></div>
+        <div class="principle-line"><span>03</span><b>DECIDE</b></div>
+        <p>Every conclusion is paired with evidence, confidence and limits. Unavailable checks remain visible.</p>
+      </div>
+    </aside>
+
+    <main id="main" class="main-canvas">
+      <section class="landing-grid">
+        <div class="hero-command panel">
+          <div class="hero-copy">
+            <div class="hero-badge"><span></span> TRUST SURFACE MONITOR</div>
+            <h1>Don't trust the AI.<br><strong>Inspect the chain.</strong></h1>
+            <p>One offline assurance surface for the three places an AI system can lose trust: <b>training data</b>, the <b>model artifact</b>, and the <b>inference trail</b>.</p>
+            <div class="hero-actions"><button id="welcomeDemo" class="hero-primary">Launch 90-second demonstration <span>↗</span></button><button id="heroBrief" class="hero-ghost">View assurance philosophy</button></div>
+          </div>
+          <div class="hero-visual" aria-label="Integrity pipeline infographic">
+            <div class="orbit orbit-1"></div><div class="orbit orbit-2"></div>
+            <div class="core-node"><span>AI</span><small>TRUST</small></div>
+            <div class="orbit-node node-data"><b>01</b><span>DATA</span><small>ingredients</small></div>
+            <div class="orbit-node node-model"><b>02</b><span>MODEL</span><small>machine</small></div>
+            <div class="orbit-node node-output"><b>03</b><span>OUTPUT</span><small>receipts</small></div>
+            <div class="orbit-node node-shift"><b>04</b><span>SHIFT</span><small>context</small></div>
+          </div>
+        </div>
+        <div class="landing-side">
+          <div class="mini-panel panel"><div class="mini-kicker">WHY VERIVISION</div><div class="big-stat">3<span> trust surfaces</span></div><p>Cross-surface evidence instead of isolated model testing.</p></div>
+          <div class="mini-panel panel"><div class="mini-kicker">DECISION LANGUAGE</div><div class="decision-line"><span class="decision-dot accept"></span><b>ACCEPT</b><small>evidence supports release</small></div><div class="decision-line"><span class="decision-dot review"></span><b>REVIEW</b><small>human assurance required</small></div><div class="decision-line"><span class="decision-dot quarantine"></span><b>QUARANTINE</b><small>integrity risk is material</small></div></div>
+        </div>
+      </section>
+      <section class="principles-band panel">
+        <div><span>01</span><b>HASH</b><small>What exactly arrived?</small></div><div class="band-arrow">→</div><div><span>02</span><b>PROBE</b><small>What does the artifact do?</small></div><div class="band-arrow">→</div><div><span>03</span><b>VERIFY</b><small>Can the receipt be trusted?</small></div><div class="band-arrow">→</div><div><span>04</span><b>ATTRIBUTE</b><small>Drift or manipulation?</small></div><div class="band-arrow">→</div><div><span>05</span><b>DECIDE</b><small>Accept · Review · Quarantine</small></div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

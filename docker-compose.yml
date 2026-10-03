@@ -1,0 +1,8 @@
+services:
+  verivision:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/opt/verivision/data
+    restart: unless-stopped

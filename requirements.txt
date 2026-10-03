@@ -1,0 +1,14 @@
+fastapi==0.128.0
+uvicorn[standard]==0.40.0
+python-multipart==0.0.20
+cryptography==46.0.4
+pillow==12.0.0
+numpy==2.3.5
+opencv-python-headless==4.13.0.92
+scikit-learn==1.8.0
+python-multipart==0.0.20
+PyYAML==6.0.3
+# Optional heavyweight runtimes (enable richer model checks when available):
+# torch==2.10.0
+# onnx==1.20.0
+# onnxruntime==1.24.0
