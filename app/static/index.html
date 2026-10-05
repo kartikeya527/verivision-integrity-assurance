@@ -1,113 +1,609 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#07131c">
-  <title>VeriVision · Trust & Integrity Command Center</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VeriVision — AI Integrity Assurance</title>
+  <meta name="description"
+    content="Offline cryptographic integrity assurance for computer-vision AI pipelines. Training data, model, inference, and environment shift — in one investigation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="/static/app.css">
 </head>
+
 <body>
-<div class="app-shell">
-  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
 
-  <header class="topbar">
-    <div class="brand-block">
-      <div class="brand-mark"><span>V</span></div>
-      <div>
-        <div class="eyebrow">OFFLINE ASSURANCE PLATFORM · AIR-GAPPED READY</div>
-        <div class="brand-name">VERIVISION</div>
-        <div class="brand-sub">Trust & Integrity Command Center <span>· DATA · MODEL · OUTPUT · SHIFT</span></div>
-      </div>
+  <!-- ═══════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <a class="nav-brand" href="#" onclick="showView('story')">
+      <span class="nav-brand-mark" aria-hidden="true">
+        <svg class="nav-logo-svg" viewBox="0 0 24 24" width="18" height="18" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-dasharray="2 3"
+            class="nav-ring-spin" />
+          <circle cx="12" cy="12" r="6" stroke="rgba(255,255,255,0.4)" stroke-width="1" class="nav-ring-inner" />
+          <path d="M12 2 L12 6 M12 18 L12 22 M2 12 L6 12 M18 12 L22 12" stroke="rgba(255,255,255,0.35)"
+            stroke-width="1" />
+          <circle cx="12" cy="12" r="2" fill="#ffffff" class="nav-core-dot" />
+        </svg>
+      </span>
+      <span class="nav-wordmark">VERIVISION</span>
+    </a>
+    <div class="nav-links">
+      <button class="nav-link active" id="navStory" onclick="showView('story')">Investigation</button>
+      <button class="nav-link" id="navInspect" onclick="showView('inspect')">Inspect</button>
+      <button class="nav-link" id="navEvidence" onclick="showView('evidence')">Evidence</button>
     </div>
-    <div class="topbar-right">
-      <div class="live-indicator"><i></i><span>LOCAL EVIDENCE STORE</span></div>
-      <button id="healthBtn" class="top-btn">System status</button>
-      <button id="historyBtn" class="top-btn">History</button>
+    <div class="nav-status">
+      <span class="nav-dot" id="navDot"></span>
+      <span class="nav-label" id="navLabel">Offline · Ready</span>
     </div>
-  </header>
+  </nav>
 
-  <div class="app-grid">
-    <aside class="sidebar">
-      <div class="side-card mission-card">
-        <div class="side-kicker">MISSION SETUP</div>
-        <label class="field-label">Inspection identity</label>
-        <input id="name" class="input" value="Aerial AI Assurance — Batch 01">
+  <!-- ═══════════════════════════════════════════════════════
+     VIEW: INVESTIGATION STORY
+═══════════════════════════════════════════════════════ -->
+  <div id="viewStory" class="view active">
 
-        <div class="ingest-stack">
-          <label class="ingest" data-target="dataInput">
-            <span class="ingest-icon">▦</span><span><b>TRAINING DATA</b><small>COCO · YOLO · images</small></span><em id="dataCount">0</em>
-            <input id="dataInput" type="file" multiple>
-          </label>
-          <label class="ingest" data-target="modelInput">
-            <span class="ingest-icon">◈</span><span><b>AI MODEL</b><small>ONNX · PyTorch</small></span><em id="modelCount">0</em>
-            <input id="modelInput" type="file">
-          </label>
-          <label class="ingest" data-target="outputInput">
-            <span class="ingest-icon">⌁</span><span><b>INFERENCE OUTPUTS</b><small>JSON · JSONL signed records</small></span><em id="outputCount">0</em>
-            <input id="outputInput" type="file">
-          </label>
-          <label class="ingest" data-target="refInput">
-            <span class="ingest-icon">◌</span><span><b>REFERENCE POPULATION</b><small>Baseline image population</small></span><em id="refCount">0</em>
-            <input id="refInput" type="file" multiple>
-          </label>
-          <label class="ingest" data-target="curInput">
-            <span class="ingest-icon">◎</span><span><b>CURRENT POPULATION</b><small>New image population</small></span><em id="curCount">0</em>
-            <input id="curInput" type="file" multiple>
-          </label>
+    <!-- Opening -->
+    <section class="section-open" id="sectionOpen">
+      <div class="open-content">
+        <p class="open-pre">Integrity assurance for computer vision.</p>
+        <h1 class="open-headline">
+          <span class="hl-word" data-delay="0">VeriVision</span>
+        </h1>
+        <p class="open-body">An offline instrument that investigates every layer of an AI pipeline — training data,
+          model artifact, inference output, and environmental shift — and produces a cryptographic evidence record.</p>
+        <div class="open-surfaces">
+          <span class="surface-word" data-surface="DATA" data-i="0">DATA</span>
+          <span class="surface-sep">·</span>
+          <span class="surface-word" data-surface="MODEL" data-i="1">MODEL</span>
+          <span class="surface-sep">·</span>
+          <span class="surface-word" data-surface="OUTPUT" data-i="2">OUTPUT</span>
+          <span class="surface-sep">·</span>
+          <span class="surface-word" data-surface="SHIFT" data-i="3">SHIFT</span>
         </div>
-
-        <button id="inspectBtn" class="action-primary"><span>RUN FULL INSPECTION</span><i>↗</i></button>
-        <button id="demoBtn" class="action-secondary"><span>Run Integrity Assurance Demonstration</span><i>▶</i></button>
-        <div id="ingestStatus" class="ingest-status">Ready for local evidence.</div>
-      </div>
-
-      <div class="side-card assurance-card">
-        <div class="side-kicker">ASSURANCE ENGINES</div>
-        <div class="engine-row"><i></i><span>Data integrity</span><b>ACTIVE</b></div>
-        <div class="engine-row"><i></i><span>Model forensics</span><b>ACTIVE</b></div>
-        <div class="engine-row"><i></i><span>Provenance cryptography</span><b>ACTIVE</b></div>
-        <div class="engine-row"><i></i><span>Drift attribution</span><b>ACTIVE</b></div>
-        <div class="engine-row"><i></i><span>Evidence graph</span><b>ACTIVE</b></div>
-      </div>
-
-      <div class="side-card principle-card">
-        <div class="principle-line"><span>01</span><b>VERIFY</b></div>
-        <div class="principle-line"><span>02</span><b>TRACE</b></div>
-        <div class="principle-line"><span>03</span><b>DECIDE</b></div>
-        <p>Every conclusion is paired with evidence, confidence and limits. Unavailable checks remain visible.</p>
-      </div>
-    </aside>
-
-    <main id="main" class="main-canvas">
-      <section class="landing-grid">
-        <div class="hero-command panel">
-          <div class="hero-copy">
-            <div class="hero-badge"><span></span> TRUST SURFACE MONITOR</div>
-            <h1>Don't trust the AI.<br><strong>Inspect the chain.</strong></h1>
-            <p>One offline assurance surface for the three places an AI system can lose trust: <b>training data</b>, the <b>model artifact</b>, and the <b>inference trail</b>.</p>
-            <div class="hero-actions"><button id="welcomeDemo" class="hero-primary">Launch 90-second demonstration <span>↗</span></button><button id="heroBrief" class="hero-ghost">View assurance philosophy</button></div>
-          </div>
-          <div class="hero-visual" aria-label="Integrity pipeline infographic">
-            <div class="orbit orbit-1"></div><div class="orbit orbit-2"></div>
-            <div class="core-node"><span>AI</span><small>TRUST</small></div>
-            <div class="orbit-node node-data"><b>01</b><span>DATA</span><small>ingredients</small></div>
-            <div class="orbit-node node-model"><b>02</b><span>MODEL</span><small>machine</small></div>
-            <div class="orbit-node node-output"><b>03</b><span>OUTPUT</span><small>receipts</small></div>
-            <div class="orbit-node node-shift"><b>04</b><span>SHIFT</span><small>context</small></div>
-          </div>
+        <div class="open-actions">
+          <button class="btn-primary" id="openDemoBtn">Run demonstration</button>
+          <button class="btn-ghost" onclick="showView('inspect')">Upload assets</button>
         </div>
-        <div class="landing-side">
-          <div class="mini-panel panel"><div class="mini-kicker">WHY VERIVISION</div><div class="big-stat">3<span> trust surfaces</span></div><p>Cross-surface evidence instead of isolated model testing.</p></div>
-          <div class="mini-panel panel"><div class="mini-kicker">DECISION LANGUAGE</div><div class="decision-line"><span class="decision-dot accept"></span><b>ACCEPT</b><small>evidence supports release</small></div><div class="decision-line"><span class="decision-dot review"></span><b>REVIEW</b><small>human assurance required</small></div><div class="decision-line"><span class="decision-dot quarantine"></span><b>QUARANTINE</b><small>integrity risk is material</small></div></div>
+        <div class="open-status" id="openStatus"></div>
+      </div>
+      <div class="open-diagram" id="heroDiagram" aria-hidden="true">
+        <svg class="diagram-svg" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="monoCoreGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.05" />
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <clipPath id="eyeLidClip">
+              <path d="M 176 240 C 198 202, 282 202, 304 240 C 282 278, 198 278, 176 240 Z" />
+            </clipPath>
+          </defs>
+
+          <!-- Entire unified rotating assembly -->
+          <g class="full-logo-rotor" id="fullLogoRotor">
+            <animateTransform attributeName="transform" type="rotate" from="0 240 240" to="360 240 240" dur="48s"
+              repeatCount="indefinite" />
+            <!-- Outer boundary ring -->
+            <circle cx="240" cy="240" r="218" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+
+            <!-- Outer calibrated dashed track -->
+            <circle cx="240" cy="240" r="198" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="2 8" />
+
+            <!-- Precision 30-degree dial ticks around perimeter -->
+            <g stroke="rgba(255,255,255,0.18)" stroke-width="1">
+              <line x1="240" y1="22" x2="240" y2="30" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(30 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(60 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(90 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(120 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(150 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(180 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(210 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(240 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(270 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(300 240 240)" />
+              <line x1="240" y1="22" x2="240" y2="30" transform="rotate(330 240 240)" />
+            </g>
+
+            <!-- 45-degree angle major ticks -->
+            <g stroke="rgba(255,255,255,0.3)" stroke-width="1.2">
+              <line x1="240" y1="18" x2="240" y2="30" transform="rotate(45 240 240)" />
+              <line x1="240" y1="18" x2="240" y2="30" transform="rotate(135 240 240)" />
+              <line x1="240" y1="18" x2="240" y2="30" transform="rotate(225 240 240)" />
+              <line x1="240" y1="18" x2="240" y2="30" transform="rotate(315 240 240)" />
+            </g>
+
+            <!-- Full axis crosshairs -->
+            <line x1="240" y1="16" x2="240" y2="464" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+            <line x1="16" y1="240" x2="464" y2="240" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+
+            <!-- Mid guide rings -->
+            <circle cx="240" cy="240" r="168" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+            <circle cx="240" cy="240" r="144" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="8 6" />
+
+            <!-- Diamond circuit linking the 4 cardinal nodes -->
+            <polygon points="240,96 384,240 240,384 96,240" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"
+              fill="none" />
+
+            <!-- Inner concentric rings -->
+            <circle cx="240" cy="240" r="64" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+            <circle cx="240" cy="240" r="38" stroke="rgba(255,255,255,0.16)" stroke-width="1" stroke-dasharray="3 4" />
+
+            <!-- 4 Cardinal Nodes (Top, Right, Bottom, Left) -->
+            <g transform="translate(240, 96)">
+              <circle r="13" stroke="rgba(255,255,255,0.16)" stroke-width="1" />
+              <circle r="6" stroke="rgba(255,255,255,0.3)" stroke-width="1" />
+              <circle r="2.5" fill="#ffffff" />
+              <line x1="-16" y1="0" x2="16" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+              <line x1="0" y1="-16" x2="0" y2="16" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+            </g>
+            <g transform="translate(384, 240)">
+              <circle r="13" stroke="rgba(255,255,255,0.16)" stroke-width="1" />
+              <circle r="6" stroke="rgba(255,255,255,0.3)" stroke-width="1" />
+              <circle r="2.5" fill="#ffffff" />
+              <line x1="-16" y1="0" x2="16" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+              <line x1="0" y1="-16" x2="0" y2="16" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+            </g>
+            <g transform="translate(240, 384)">
+              <circle r="13" stroke="rgba(255,255,255,0.16)" stroke-width="1" />
+              <circle r="6" stroke="rgba(255,255,255,0.3)" stroke-width="1" />
+              <circle r="2.5" fill="#ffffff" />
+              <line x1="-16" y1="0" x2="16" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+              <line x1="0" y1="-16" x2="0" y2="16" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+            </g>
+            <g transform="translate(96, 240)">
+              <circle r="13" stroke="rgba(255,255,255,0.16)" stroke-width="1" />
+              <circle r="6" stroke="rgba(255,255,255,0.3)" stroke-width="1" />
+              <circle r="2.5" fill="#ffffff" />
+              <line x1="-16" y1="0" x2="16" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+              <line x1="0" y1="-16" x2="0" y2="16" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+            </g>
+
+          </g>
+
+          <!-- Fixed Center Living Eye Assembly (Maintains horizontal posture while outer instrument rotates) -->
+          <g class="center-eye-anchor">
+            <!-- Ambient Core Glow -->
+            <circle cx="240" cy="240" r="54" fill="url(#monoCoreGlow)" />
+
+            <!-- Outer Eye Horizon Ticks & Calibration Marks -->
+            <line x1="158" y1="240" x2="172" y2="240" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" />
+            <line x1="308" y1="240" x2="322" y2="240" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" />
+
+            <!-- Upper / Lower eyelid subtle anatomical crease lines -->
+            <path d="M 194 214 C 218 200, 262 200, 286 214" stroke="rgba(255,255,255,0.25)" stroke-width="1"
+              fill="none" />
+            <path d="M 198 266 C 220 280, 260 280, 282 266" stroke="rgba(255,255,255,0.25)" stroke-width="1"
+              fill="none" />
+
+            <!-- Blinking Eyelid Structure (Closes vertically over the eye) -->
+            <g class="center-eye" id="centerEye">
+              <!-- Sclera / Eye Background (Deep contrast fill against rotating background) -->
+              <path d="M 176 240 C 198 202, 282 202, 304 240 C 282 278, 198 278, 176 240 Z" fill="rgba(8, 10, 14, 0.94)"
+                stroke="rgba(255,255,255,0.8)" stroke-width="1.6" />
+
+              <!-- Moving Gaze Group: Iris, Pupil, Highlights (Clipped inside eyelids so gaze shifts look completely natural) -->
+              <g clip-path="url(#eyeLidClip)">
+                <g id="eyeGazeGroup" class="eye-gaze">
+                  <!-- Outer Limbal Ring of Iris -->
+                  <circle cx="240" cy="240" r="24" stroke="rgba(255,255,255,0.7)" stroke-width="1.4"
+                    fill="rgba(18,22,28,0.95)" />
+
+                  <!-- Inner Iris Aperture Track -->
+                  <circle cx="240" cy="240" r="17" stroke="rgba(255,255,255,0.28)" stroke-width="1"
+                    stroke-dasharray="3 3" fill="none" />
+
+                  <!-- Delicate Iris Radial Calibration Spokes -->
+                  <g stroke="rgba(255,255,255,0.18)" stroke-width="0.8">
+                    <line x1="240" y1="218" x2="240" y2="223" />
+                    <line x1="240" y1="257" x2="240" y2="262" />
+                    <line x1="218" y1="240" x2="223" y2="240" />
+                    <line x1="257" y1="240" x2="262" y2="240" />
+                    <line x1="224" y1="224" x2="228" y2="228" />
+                    <line x1="252" y1="252" x2="256" y2="256" />
+                    <line x1="224" y1="256" x2="228" y2="252" />
+                    <line x1="252" y1="228" x2="256" y2="224" />
+                  </g>
+
+                  <!-- Core Pupil with Dual Glints -->
+                  <g id="eyePupilScaleGroup">
+                    <circle cx="240" cy="240" r="10" fill="#080808" stroke="rgba(255,255,255,0.4)" stroke-width="0.8" />
+                    <circle cx="240" cy="240" r="7.8" fill="#ffffff" />
+                    <!-- Primary Sharp Catchlight Glint -->
+                    <circle cx="244" cy="236" r="2.8" fill="#ffffff" opacity="0.98" />
+                    <!-- Secondary Soft Ambient Catchlight Glint -->
+                    <circle cx="235" cy="244" r="1.4" fill="#ffffff" opacity="0.75" />
+                  </g>
+                </g>
+              </g>
+
+              <!-- Eye Almond Outline Overlay (Crisp border atop the clipped gaze) -->
+              <path d="M 176 240 C 198 202, 282 202, 304 240 C 282 278, 198 278, 176 240 Z" fill="none"
+                stroke="rgba(255,255,255,0.85)" stroke-width="1.6" />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Story: result sections (hidden until inspection runs) -->
+    <div id="storyResult" class="story-result" style="display:none">
+
+      <!-- DATA section -->
+      <section class="story-section" id="storyData">
+        <div class="story-section-inner">
+          <div class="story-label">01 / DATA</div>
+          <h2 class="story-heading">Before trusting the model,<br>trust what entered it.</h2>
+          <p class="story-body" id="dataStoryBody">Inspecting training dataset for duplicates, out-of-distribution
+            samples, and adversarial trigger candidates.</p>
+          <div class="data-hud" id="dataHud"></div>
+          <div class="data-field" id="dataField" aria-label="Dataset sample field">
+            <div class="data-field-overlay" id="dataFieldOverlay"></div>
+            <canvas id="dataCanvas"></canvas>
+            <div id="dataTooltip" class="data-canvas-tooltip" style="display:none"></div>
+            <div class="data-legend-bar" id="dataLegendBar"></div>
+          </div>
+          <div class="story-findings" id="dataFindings"></div>
         </div>
       </section>
-      <section class="principles-band panel">
-        <div><span>01</span><b>HASH</b><small>What exactly arrived?</small></div><div class="band-arrow">→</div><div><span>02</span><b>PROBE</b><small>What does the artifact do?</small></div><div class="band-arrow">→</div><div><span>03</span><b>VERIFY</b><small>Can the receipt be trusted?</small></div><div class="band-arrow">→</div><div><span>04</span><b>ATTRIBUTE</b><small>Drift or manipulation?</small></div><div class="band-arrow">→</div><div><span>05</span><b>DECIDE</b><small>Accept · Review · Quarantine</small></div>
+
+      <!-- MODEL section -->
+      <section class="story-section" id="storyModel">
+        <div class="story-section-inner story-section-split">
+          <div class="story-text">
+            <div class="story-label">02 / MODEL</div>
+            <h2 class="story-heading">The model is an artifact, too.</h2>
+            <p class="story-body" id="modelStoryBody">Cryptographic fingerprint comparison verifies that the deployed
+              artifact matches the registered baseline.</p>
+            <div class="story-findings" id="modelFindings"></div>
+          </div>
+          <div class="model-compare" id="modelCompare" aria-label="Model hash comparison">
+            <!-- Injected by JS -->
+          </div>
+        </div>
       </section>
-    </main>
+
+      <!-- OUTPUT section -->
+      <section class="story-section" id="storyOutput">
+        <div class="story-section-inner">
+          <div class="story-label">03 / OUTPUT</div>
+          <h2 class="story-heading">Every inference is a receipt.</h2>
+          <p class="story-body" id="outputStoryBody">Ed25519-signed inference records travel through a cryptographic
+            chain. Any break is evidence of tampering.</p>
+          <div class="provenance-chain" id="provenanceChain" aria-label="Provenance chain">
+            <!-- Injected by JS -->
+          </div>
+          <div class="story-findings" id="outputFindings"></div>
+        </div>
+      </section>
+
+      <!-- SHIFT section -->
+      <section class="story-section" id="storyShift">
+        <div class="story-section-inner story-section-split">
+          <div class="story-text">
+            <div class="story-label">04 / SHIFT</div>
+            <h2 class="story-heading">The environment changed.<br>But how much?</h2>
+            <p class="story-body" id="shiftStoryBody">Reference population vs. current deployment population. Natural
+              drift or coordinated manipulation?</p>
+            <div class="story-findings" id="shiftFindings"></div>
+          </div>
+          <div class="shift-chart" id="shiftChart" aria-label="Distribution shift visualization">
+            <!-- SVG bars injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- DECISION section -->
+      <section class="story-section decision-section" id="storyDecision">
+        <div class="story-section-inner">
+          <div class="story-label">DECISION</div>
+          <div class="decision-verdict" id="decisionVerdict"></div>
+          <p class="decision-sub" id="decisionSub"></p>
+          <div class="surface-status-row" id="surfaceStatusRow"></div>
+          <div class="decision-findings" id="decisionFindings"></div>
+          <div class="decision-actions">
+            <button class="btn-primary" id="openReportBtn">Open assurance report</button>
+            <button class="btn-ghost" id="openEvidenceBtn" onclick="showView('evidence')">Explore evidence
+              graph</button>
+            <button class="btn-ghost" onclick="showView('inspect')">New inspection</button>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /storyResult -->
+
+  </div><!-- /viewStory -->
+
+  <!-- ═══════════════════════════════════════════════════════
+     VIEW: INSPECT WORKSPACE
+═══════════════════════════════════════════════════════ -->
+  <div id="viewInspect" class="view" style="display:none">
+    <div class="workspace">
+
+      <header class="workspace-header">
+        <h1>Inspection workspace</h1>
+        <p>Upload evidence assets and run a local cryptographic integrity inspection. All processing happens offline —
+          no data leaves this machine.</p>
+      </header>
+
+      <div class="workspace-grid">
+
+        <!-- Upload form -->
+        <section class="ws-card">
+          <div class="ws-card-head">
+            <h2>Evidence assets</h2>
+            <p>Provide any combination of data, model, output, and environment assets. Uninspected surfaces receive a
+              default risk score.</p>
+          </div>
+          <div class="upload-form">
+            <label class="upload-row">
+              <span class="upload-label">
+                <strong>Training data</strong>
+                <small>COCO JSON, YOLO labels, or image files</small>
+              </span>
+              <div class="upload-right">
+                <span class="upload-count" id="dataCount">0</span>
+                <label class="upload-btn" for="dataInput">Choose files</label>
+                <input id="dataInput" type="file" multiple accept=".json,.txt,.png,.jpg,.jpeg" hidden>
+              </div>
+            </label>
+            <label class="upload-row">
+              <span class="upload-label">
+                <strong>AI model artifact</strong>
+                <small>.pt, .pth, .onnx, or binary</small>
+              </span>
+              <div class="upload-right">
+                <span class="upload-count" id="modelCount">0</span>
+                <label class="upload-btn" for="modelInput">Choose file</label>
+                <input id="modelInput" type="file" accept=".pt,.pth,.onnx,.bin" hidden>
+              </div>
+            </label>
+            <label class="upload-row">
+              <span class="upload-label">
+                <strong>Inference outputs</strong>
+                <small>Signed JSON records</small>
+              </span>
+              <div class="upload-right">
+                <span class="upload-count" id="outputCount">0</span>
+                <label class="upload-btn" for="outputInput">Choose file</label>
+                <input id="outputInput" type="file" accept=".json" hidden>
+              </div>
+            </label>
+            <label class="upload-row">
+              <span class="upload-label">
+                <strong>Reference population</strong>
+                <small>Baseline images for shift analysis</small>
+              </span>
+              <div class="upload-right">
+                <span class="upload-count" id="refCount">0</span>
+                <label class="upload-btn" for="refInput">Choose files</label>
+                <input id="refInput" type="file" multiple accept=".png,.jpg,.jpeg" hidden>
+              </div>
+            </label>
+            <label class="upload-row">
+              <span class="upload-label">
+                <strong>Current deployment</strong>
+                <small>Images from current operational environment</small>
+              </span>
+              <div class="upload-right">
+                <span class="upload-count" id="curCount">0</span>
+                <label class="upload-btn" for="curInput">Choose files</label>
+                <input id="curInput" type="file" multiple accept=".png,.jpg,.jpeg" hidden>
+              </div>
+            </label>
+          </div>
+          <div class="upload-footer">
+            <input class="name-input" id="name" type="text" placeholder="Inspection name (optional)">
+            <button class="btn-primary" id="inspectBtn">Run inspection</button>
+          </div>
+        </section>
+
+        <!-- Right column -->
+        <div class="ws-sidebar">
+
+          <!-- Demo -->
+          <section class="ws-card ws-card-compact">
+            <h2>Demonstration</h2>
+            <p>Synthesizes a complete evidence pipeline with trigger candidates, a model artifact, signed inference
+              records, and an environment shift — all computed locally.</p>
+            <button class="btn-primary full-w" id="demoBtn">Run demonstration</button>
+          </section>
+
+          <!-- Status -->
+          <section class="ws-card ws-card-compact">
+            <h2>Status</h2>
+            <div class="ws-status" id="ingestStatus">Ready for local evidence.</div>
+          </section>
+
+          <!-- History -->
+          <section class="ws-card ws-card-compact">
+            <h2>Inspection history</h2>
+            <div class="history-mini" id="historyMini">
+              <div class="history-empty">No inspections yet.</div>
+            </div>
+            <button class="btn-ghost full-w" id="historyBtn" style="margin-top:16px">Load all</button>
+          </section>
+
+          <!-- Actions -->
+          <section class="ws-card ws-card-compact" id="wsActions" style="display:none">
+            <h2>Current inspection</h2>
+            <div id="wsCurrentId" class="mono small muted"></div>
+            <div class="ws-action-list">
+              <button class="btn-ghost full-w" id="wsReportBtn">Assurance report ↗</button>
+              <button class="btn-ghost full-w" id="wsExportBtn">Export JSON</button>
+              <button class="btn-ghost full-w" id="wsVerifyBtn">Verify chain</button>
+              <button class="btn-ghost full-w" id="wsTamperBtn">Live tamper replay</button>
+            </div>
+            <div id="verifyBox" class="verify-result"></div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div><!-- /viewInspect -->
+
+  <!-- ═══════════════════════════════════════════════════════
+     VIEW: EVIDENCE GRAPH
+═══════════════════════════════════════════════════════ -->
+  <div id="viewEvidence" class="view" style="display:none">
+    <div class="evidence-workspace">
+      <!-- Top Header with Title, Tag, and Forensic Controls -->
+      <div class="evidence-header">
+        <div class="evidence-title-block">
+          <div class="evidence-badge-tag">FORENSIC ASSURANCE NETWORK 2.0</div>
+          <h1>Evidence Investigation Graph</h1>
+          <p id="evidenceSubtitle">Correlating multi-contributor integrity signals into an explainable case assessment.</p>
+        </div>
+        <div class="evidence-actions">
+          <button class="btn-primary btn-sm" id="btnFollowEvidence">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="margin-right:5px"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Follow the Evidence
+          </button>
+          <div class="evidence-filter-group">
+            <label for="eviDomainFilter" class="filter-label">Surface:</label>
+            <select id="eviDomainFilter" class="select-sm">
+              <option value="ALL">All Domains</option>
+              <option value="DATA">Data Integrity</option>
+              <option value="MODEL">Model Integrity</option>
+              <option value="OUTPUT">Output Provenance</option>
+              <option value="SHIFT">Distribution Shift</option>
+            </select>
+          </div>
+          <div class="evidence-controls">
+            <button class="btn-ghost btn-sm" id="eviFit" title="Fit to View">Fit</button>
+            <button class="btn-ghost btn-sm" id="eviZoomIn" title="Zoom In">+</button>
+            <button class="btn-ghost btn-sm" id="eviZoomOut" title="Zoom Out">−</button>
+            <button class="btn-ghost btn-sm" id="eviReset" title="Reset View">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Narrative Banner / Case Story Bar -->
+      <div class="evidence-story-bar" id="evidenceStoryBar" style="display:none">
+        <div class="story-content">
+          <div class="story-label">CASE STORY &amp; CORROBORATION</div>
+          <div class="story-text" id="evidenceCaseStoryText">Loading case narrative...</div>
+        </div>
+        <div class="story-verdict-badge" id="evidenceVerdictBadge">
+          <div class="badge-verdict" id="eviBadgeVerdict">--</div>
+          <div class="badge-score" id="eviBadgeScore">Risk --/100</div>
+        </div>
+      </div>
+
+      <!-- "Follow the Evidence" Interactive Walkthrough Bar -->
+      <div class="evidence-walkthrough-bar" id="evidenceWalkthroughBar" style="display:none">
+        <div class="walkthrough-meta">
+          <span class="walkthrough-step" id="walkthroughStepNum">STEP 1 OF 3</span>
+          <span class="walkthrough-title" id="walkthroughTitle">Forensic Step</span>
+        </div>
+        <div class="walkthrough-desc" id="walkthroughDesc">Analyzing evidence path...</div>
+        <div class="walkthrough-btns">
+          <button class="btn-ghost btn-xs" id="btnWalkPrev">← Previous</button>
+          <button class="btn-primary btn-xs" id="btnWalkNext">Next Step →</button>
+          <button class="btn-ghost btn-xs" id="btnWalkExit">Exit</button>
+        </div>
+      </div>
+
+      <!-- Main Graph Workspace: Canvas + Inspector Drawer -->
+      <div class="evidence-main-area">
+        <div class="evidence-canvas-wrap">
+          <canvas id="evidenceCanvas" class="evidence-canvas"></canvas>
+          <div class="evidence-tooltip" id="evidenceTooltip" style="display:none"></div>
+          
+          <!-- Empty State Overlay -->
+          <div class="evidence-empty-state" id="evidenceEmptyState" style="display:none">
+            <div class="empty-icon">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h2>No Correlated Evidence Found</h2>
+            <p>Run an inspection or load demo scenarios to generate the forensic evidence graph.</p>
+            <button class="btn-primary btn-sm" onclick="runDemoInspection()">Load Demo Case</button>
+          </div>
+        </div>
+
+        <!-- Forensic Inspector Slide-over Panel -->
+        <aside class="evidence-inspector" id="evidenceInspector" style="display:none">
+          <div class="inspector-header">
+            <div>
+              <div class="inspector-category" id="insCategory">FINDING DETAIL</div>
+              <h3 class="inspector-title" id="insTitle">Evidence Inspection</h3>
+            </div>
+            <button class="inspector-close" id="insCloseBtn" onclick="hideEvidenceInspector()">&times;</button>
+          </div>
+          <div class="inspector-body" id="insBody">
+            <!-- Dynamic Inspector Content -->
+          </div>
+        </aside>
+      </div>
+
+      <!-- Bottom Narrative Panels: Why Quarantined, Convergence, Uncertainties, How to Read -->
+      <div class="evidence-bottom-grid" id="evidenceBottomGrid">
+        <div class="bottom-card" id="cardWhyDecision">
+          <div class="bottom-card-header">
+            <span class="bc-num">01</span>
+            <h3 id="whyDecisionHeadline">Why This Case Was Evaluated</h3>
+          </div>
+          <p class="bc-summary" id="whyDecisionSummary">Loading policy rationale...</p>
+          <div class="bc-reasons" id="whyDecisionReasons"></div>
+        </div>
+
+        <div class="bottom-card" id="cardConvergence">
+          <div class="bottom-card-header">
+            <span class="bc-num">02</span>
+            <h3>Evidence Convergence</h3>
+          </div>
+          <p class="bc-summary" id="convergenceSummary">Loading convergence analysis...</p>
+          <div class="convergence-callout" id="convergenceCallout"></div>
+        </div>
+
+        <div class="bottom-card" id="cardUncertainties">
+          <div class="bottom-card-header">
+            <span class="bc-num">03</span>
+            <h3>What Remains Uncertain</h3>
+          </div>
+          <p class="bc-summary">Explicit technical boundaries and unverified hypotheses:</p>
+          <ul class="uncertainties-list" id="uncertaintiesList"></ul>
+        </div>
+
+        <div class="bottom-card" id="cardHowToRead">
+          <div class="bottom-card-header">
+            <span class="bc-num">04</span>
+            <h3>How To Read This Graph</h3>
+          </div>
+          <div class="how-to-steps">
+            <div class="ht-step"><b>01 Findings:</b> Anomalies detected by offline engines.</div>
+            <div class="ht-step"><b>02 Domains:</b> Grouped into Data, Model, Output, Shift.</div>
+            <div class="ht-step"><b>03 Correlation:</b> Connected via shared assets, batches, or mutual corroboration.</div>
+            <div class="ht-step"><b>04 Decision:</b> Evidence converges on central policy verdict.</div>
+          </div>
+          <div class="graph-legend-inline">
+            <span class="leg-item"><span class="leg-line solid"></span> Direct Evidence</span>
+            <span class="leg-item"><span class="leg-line dashed"></span> Operational Drift</span>
+            <span class="leg-item"><span class="leg-line highlight"></span> Selected Path</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /viewEvidence -->
+
+  <!-- ═══════════════════════════════════════════════════════
+     MODAL LAYER
+═══════════════════════════════════════════════════════ -->
+  <div id="modalLayer" class="modal-layer" style="display:none" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box" id="modalBox"></div>
   </div>
-</div>
-<script src="/static/app.js"></script>
+
+  <div class="toast-layer" id="toastLayer"></div>
+
+  <script src="/static/app.js"></script>
 </body>
+
 </html>

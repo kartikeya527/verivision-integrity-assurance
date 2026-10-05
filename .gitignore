@@ -6,3 +6,9 @@ data/uploads/*
 data/reports/*
 data/keys/*
 data/verivision.db
+verivision.db
+*.db
+.pytest_cache/
+.agents/
+.codex/
+skills-lock.json
